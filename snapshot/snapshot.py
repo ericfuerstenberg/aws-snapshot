@@ -39,6 +39,8 @@ def list_snapshots(project):
 			for s in v.snapshots.all():
 				print(", ".join((
 					s.id,
+					v.id,
+					i.id,
 					s.start_time.strftime("%c"),
 					s.progress,
 					s.state
