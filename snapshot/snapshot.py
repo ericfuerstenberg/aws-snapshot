@@ -100,7 +100,7 @@ def create_snapshots(project):
 			if has_pending_snapshot(v):
 				print(" Skipping {0}, snapshot already in progress".format(v.id))
 				continue
-			
+
 			print("Creating snapshot of volume {0} ".format(v.id))
 			v.create_snapshot(Description="Created by aws-snapshot automation")
 		
@@ -168,6 +168,25 @@ def start_instances(project):
 			i.start()
 		except botocore.exceptions.ClientError as e:
 			print("ERROR: Could not start {0}. ".format(i.id) + str(e))
+			continue
+	
+	return
+
+# Defines our CLI commands - "reboot"
+@instances.command('reboot')
+@click.option('--project', default=None,
+	help="Only instances for project")
+def reboot_instances(project):
+	"Reboot EC2 instances"
+
+	instances = filter_instances(project)
+
+	for i in instances:
+		print("Rebooting {0}... ".format(i.id))
+		try:
+			i.reboot()
+		except botocore.exceptions.ClientError as e:
+			print("ERROR: Could not reboot {0}. ".format(i.id) + str(e))
 			continue
 	
 	return
