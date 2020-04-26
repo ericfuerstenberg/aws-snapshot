@@ -17,5 +17,7 @@ aws-snapshot uses the configuration file created by the AWS cli. e.g.,
 `pipenv run python snapshot/snapshot.py <command> <subcommand> <--project=PROJECT>"`
 
 *command* is instances, volume, or snapshots
+
 *subcommand* depends on command
+
 *project* is optional
