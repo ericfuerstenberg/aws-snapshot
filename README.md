@@ -1,10 +1,10 @@
 # aws-snapshot
 
-Demo project to manage AWS EC2 instance snapshots
+Tool to manage AWS EC2 instances, volumes, and snapshots
 
 ## About
 
-This project is a demo, using boto3 to manage AWS EC2 instance snaphsots.
+This tool uses Python and boto3 to manage AWS EC2 instances, volumes, and snaphsots.
 
 ## Configuring
 
